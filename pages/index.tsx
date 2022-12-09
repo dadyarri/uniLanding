@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Header from "../components/header/header";
+import React from "react";
 
 export default function Home() {
     return (
@@ -6,7 +8,7 @@ export default function Home() {
             <Head>
                 <title>UNI</title>
             </Head>
-
+            <Header></Header>
         </>
     )
 }
