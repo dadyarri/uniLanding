@@ -1,14 +1,24 @@
-import { keyframes } from "@emotion/react";
-import {Container, Flex} from "theme-ui";
+import {keyframes} from "@emotion/react";
+import {Button, Container, Flex} from "theme-ui";
 import Logo from "../Logo";
 import headerData from "./header.data";
-import {Link} from "react-scroll";
+import {Link, scroller} from "react-scroll";
 
 type Props = {
     className?: string
 }
 
 export default function Header({className}: Props) {
+
+    const preorderBtnClick = () => {
+        scroller.scrollTo("preorder", {
+            spy: true,
+            smooth: true,
+            offset: -70,
+            duration: 500
+        });
+    }
+
     // @ts-ignore
     return <header sx={styles.header} className={className} id={"header"}>
         <Container sx={styles.container}>
@@ -16,17 +26,23 @@ export default function Header({className}: Props) {
             <Flex as={"nav"} sx={styles.nav}>
                 {headerData.map((headerItem, i) => (
                     <Link
-                    activeClass={"active"}
-                    to={headerItem.path}
-                    spy={true}
-                    smooth={true}
-                    offset={-70}
-                    duration={500}
-                    key={i}>
+                        activeClass={"active"}
+                        to={headerItem.path}
+                        spy={true}
+                        smooth={true}
+                        offset={-70}
+                        duration={500}
+                        key={i}>
                         {headerItem.label}
                     </Link>
                 ))}
             </Flex>
+            <Button
+                key={"preorder"}
+                className={"preorder__btn"}
+                variant={"secondary"}
+                onClick={preorderBtnClick}
+            >Предзаказ</Button>
         </Container>
     </header>
 }
@@ -36,7 +52,7 @@ const positionAnimation = keyframes`
     position: fixed;
     opacity: 1;
   }
-  
+
   to {
     position: absolute;
     opacity: 1;
@@ -56,6 +72,11 @@ const styles = {
         backgroundColor: 'transparent',
         transition: 'all 0.4s ease',
         animation: `${positionAnimation} 0.4s ease`,
+        '.preorder__btn': {
+            flexShrink: 0,
+            mr: [15, 20, null, null, 0],
+            ml: ['auto', null, null, null, 0],
+        },
         '&.sticky': {
             position: 'fixed',
             backgroundColor: 'background',
