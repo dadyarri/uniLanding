@@ -10,10 +10,6 @@ const data = [
     {
         "path": "pricing",
         "label": "Цены"
-    },
-    {
-        "path": "preorder",
-        "label": "Предзаказ"
     }
 ]
 
