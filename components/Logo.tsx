@@ -12,7 +12,8 @@ export default function Logo({src, ...rest}: Props) {
             variant: "links.logo",
             display: "flex",
             cursor: "pointer",
-            mr: 15
+            mr: 15,
+            height: "100px"
         }}
         {...rest}>
         <Image src={src} alt={"uni logo"}/>
