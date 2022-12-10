@@ -46,18 +46,51 @@ const positionAnimation = keyframes`
 
 const styles = {
     header: {
-        color: "text",
-        fontWeight: "body",
+        color: 'text',
+        fontWeight: 'body',
         py: 4,
-        width: "100%",
-        position: "absolute",
+        width: '100%',
+        position: 'absolute',
         top: 0,
         left: 0,
-        backgroundColor: "transparent",
-        transition: "all 0.4s ease",
+        backgroundColor: 'transparent',
+        transition: 'all 0.4s ease',
         animation: `${positionAnimation} 0.4s ease`,
-
+        '&.sticky': {
+            position: 'fixed',
+            backgroundColor: 'background',
+            color: '#000000',
+            boxShadow: '0 1px 2px rgba(0, 0, 0, 0.06)',
+            py: 3,
+            'nev > a': {
+                color: 'text',
+            },
+        },
     },
-    container: {},
-    nav: {}
-}
+    container: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    nav: {
+        mx: 'auto',
+        display: 'none',
+        '@media screen and (min-width: 1024px)': {
+            display: 'block',
+        },
+        a: {
+            fontSize: 2,
+            fontWeight: 'body',
+            px: 5,
+            cursor: 'pointer',
+            lineHeight: '1.2',
+            transition: 'all 0.15s',
+            '&:hover': {
+                color: 'primary',
+            },
+            '&.active': {
+                color: 'primary',
+            },
+        },
+    },
+};
